@@ -1,0 +1,36 @@
+{
+    "fp16": {
+        "enabled": "auto"
+    },
+    "bf16": {
+        "enabled": "auto"
+    },
+    "optimizer": {
+        "type": "AdamW",
+        "params": {
+            "lr": "auto",
+            "betas": "auto",
+            "eps": "auto",
+            "weight_decay": "auto"
+        }
+    },
+    "scheduler": {
+        "type": "WarmupDecayLR",
+        "params": {
+            "total_num_steps": "auto",
+            "warmup_min_lr": "auto",
+            "warmup_max_lr": "auto",
+            "warmup_num_steps": "auto",
+            "warmup_type": "linear",
+            "last_batch_iteration": -1
+        }
+    },
+    "zero_optimization": {
+        "stage": 1
+    },
+    "gradient_accumulation_steps": "auto",
+    "steps_per_print": 100,
+    "train_batch_size": 4,
+    "train_micro_batch_size_per_gpu": "auto",
+    "wall_clock_breakdown": false
+}
