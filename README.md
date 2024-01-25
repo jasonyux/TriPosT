@@ -1,6 +1,6 @@
 # TriPosT
 
-This repository will provide soon an implementation of TriPosT, which is described in this paper:
+This repository contains an official implementation of TriPosT, which is described in this paper:
 
 
 **Teaching Language Models to Self-Improve through Interactive Demonstrations**<br>
@@ -13,13 +13,13 @@ The core dependencies used in this projects are:
 transformer deepspeed wandb ray openai
 ```
 
-- for a full list, checkout the `requirements.txt`
-- we also provide a Docker image for this project at 
+- for a full list of library versions, checkout the `requirements.txt` file
+- we also provide a Docker image `docker pull jasonyux/tripost:latest`. Everything should already be configured under the `/workspace/` folder if you use this image!
 
 ## TriPoST Training
 
 This section contains examples of training TriPoST on each task. Check out:
-- Section [FT with ground-truth rationales](#ft-with-ground-truth-rationales) to train the baseline models (i.e., the ones used in `--model_name_or_path` below)
+- Section [FT from ground-truth rationales](#ft-from-ground-truth-rationales) to train the baseline models (i.e., the ones used in `--model_name_or_path` below)
 - Section [Other Training Scripts](#other-training-scripts) which contains examples of all baselines used in the paper
 
 **For a quickstart** we have uploaded some of our baseline models (LLaMA-7b finetuned with ground-truth rationale) in this [Google Drive folder](https://drive.google.com/drive/folders/1V52cXN3nRJFeY4FIRnXaju-PuIcgW750?usp=sharing). Since models weights are large in size, we are only able to upload a few of them. Please refer to Section [FT with ground-truth rationales](#ft-with-ground-truth-rationales) for examples of how obtain those for other tasks!
@@ -267,3 +267,16 @@ python runners/trainer/train_self_improve.py \
 ```
 
 for other tasks, simply change the `output_dir`, `train_dset`, `eval_dset`, `model_name_or_path`, and `task` accordingly.
+
+## Citation
+
+```
+@misc{yu2023teaching,
+      title={Teaching Language Models to Self-Improve through Interactive Demonstrations}, 
+      author={Xiao Yu and Baolin Peng and Michel Galley and Jianfeng Gao and Zhou Yu},
+      year={2023},
+      eprint={2310.13522},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
