@@ -9,15 +9,15 @@ import argparse
 
 
 def is_pred_correct(correct_ans: Any, pred_ans: Any, task_output: str):
-	if task_output == 'number':
-		is_correct = float(correct_ans) == float(pred_ans)
-	elif task_output == 'choice':
-		is_correct = correct_ans.lower().strip() == pred_ans.lower().strip()
-	elif task_output == 'generic':
-		is_correct = correct_ans == pred_ans
-	else:
-		raise NotImplementedError
-	return is_correct
+    if task_output == 'number':
+        is_correct = float(correct_ans) == float(pred_ans)
+    elif task_output == 'choice':
+        is_correct = correct_ans.lower().strip() == pred_ans.lower().strip()
+    elif task_output == 'generic':
+        is_correct = correct_ans == pred_ans
+    else:
+        raise NotImplementedError
+    return is_correct
 
 
 def get_lmsi_data(wrapped_model, evaluator, ori_path: str, save_path: str, task_type, debug=False):
@@ -92,6 +92,12 @@ if __name__ == '__main__':
         help="Path to model checkpoint"
     )
     parser.add_argument(
+        '--save_path',
+        type=str,
+        default="data/training/word_sorting/word_sorting_LMSI_rationale_1-7.jsonl",
+        help="Path to save the LMSI data"
+    )
+    parser.add_argument(
         "--debug",
         action="store_true",
         help="Whether to run in debug mode"
@@ -130,7 +136,7 @@ if __name__ == '__main__':
         wrapped_model,
         evaluator,
         ori_path="data/training/word_sorting/word_sorting_baseline_rationale_1-7.jsonl",
-        save_path="data/training/word_sorting/word_sorting_LMSI_rationale_1-7.jsonl",
+        save_path=args.save_path,
         task_type="generic",
         debug=args.debug
     )
